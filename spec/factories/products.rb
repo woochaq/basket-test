@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :product do
-    name "MyString"
+    name "Watermelon"
     price "9.99"
-    currency "MyString"
+    currency "£"
   end
 end

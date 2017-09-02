@@ -1,0 +1,24 @@
+- model_class = Order
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:total_price)
+      %th= model_class.human_attribute_name(:address)
+      %th= model_class.human_attribute_name(:credit_card_number)
+      %th= model_class.human_attribute_name(:email)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= link_to order.id, order_path(order)
+        %td= order.total_price
+        %td= order.address
+        %td= order.credit_card_number
+        %td= order.email
+        %td=l order.created_at
+        %td
+          = link_to t('.show', :default => t("helpers.links.show")), order_path(order), :class => 'btn btn-default btn-xs'

@@ -1,0 +1,23 @@
+- model_class = Order
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:total_price) + ':'
+  %br
+  = @order.total_price
+%p
+  %strong= model_class.human_attribute_name(:address) + ':'
+  %br
+  = @order.address
+%p
+  %strong= model_class.human_attribute_name(:credit_card_number) + ':'
+  %br
+  = @order.credit_card_number
+%p
+  %strong= model_class.human_attribute_name(:email) + ':'
+  %br
+  = @order.email
+
+
+= link_to t('.back', :default => t("helpers.links.back")), orders_path, :class => 'btn btn-default'

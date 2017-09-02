@@ -24,6 +24,7 @@
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
             %li= link_to "Products", products_path
+            %li= link_to "Orders", orders_path
             %li= link_to "Logout", destroy_user_session_path
 
     .container
@@ -38,6 +39,7 @@
               %ul.nav.nav-list
                 %li.nav-header Sidebar
                 %li= link_to "Products", products_path
+                %li= link_to "Orders", orders_path
                 %li= link_to "Logout", destroy_user_session_path
       %footer
         %p &copy; BasketTest 2017
