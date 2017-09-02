@@ -7,4 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
-user = User.create(email: 'test@example.com', password: '123qweasd', password_confirmation: '123qweasd')
+User.create(email: 'test@example.com', password: '123qweasd', password_confirmation: '123qweasd')
+
+Product.delete_all
+Product.create(name: 'Smart Hub', price: 49.99)
+Product.create(name: 'Motion Sensor', price: 24.99)
+Product.create(name: 'Wireless Camera', price: 99.99)
+Product.create(name: 'Smoke Sensor', price: 19.99)
+Product.create(name: 'Water Leak Sensor', price: 14.99)
