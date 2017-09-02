@@ -10,4 +10,8 @@ class Order < ApplicationRecord
   validates :status, inclusion: { in: Order::STATUSES }, presence: true
   validates :credit_card_number, presence: true, credit_card_number: true
 
+  def count_total_price
+    self.order_items.sum{ |item| (item.product.price * item.amount) }
+  end
+
 end

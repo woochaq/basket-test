@@ -16,5 +16,10 @@
           %td= item.amount
           %td= [(item.product.price * item.amount), item.product.currency].join
           %td= link_to "remove from cart", remove_product_path(item.product)
+      %tr
+        %td
+        %td
+        %td= [@basket.count_total_price, '£'].join
+        %td
 - else
   Cart is empty :(
