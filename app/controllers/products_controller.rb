@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
   end
 
   def remove
-    AddToBasketService.new(@basket, @product).call
+    RemoveFromBasketService.new(@basket, @product).call
     redirect_to basket_path, notice: 'Product has been removed'
   end
 
