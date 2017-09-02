@@ -12,5 +12,5 @@
       %tr
         %td= product.name
         %td= [product.price, product.currency].join
-        %td add
+        %td= link_to "add to cart", add_product_path(product)
 

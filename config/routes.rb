@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     root :to => 'devise/sessions#new'
   end
 
-  resources :products, only: [:index]
+  get "basket", to: 'basket#index'
+  resources :products, only: [:index] do
+    get :add, on: :member
+    get :remove, on: :member
+  end
   resources :orders, only: [:index, :show]
 end

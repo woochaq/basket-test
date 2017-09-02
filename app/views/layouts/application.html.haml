@@ -23,23 +23,17 @@
         %a.navbar-brand(href="#") BasketTest
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Products", products_path
-            %li= link_to "Orders", orders_path
-            %li= link_to "Logout", destroy_user_session_path
+            - if user_signed_in?
+              %li= link_to "Products", products_path
+              %li= link_to "Orders", orders_path
+              %li= link_to "Basket (#{@basket.order_items.count})", basket_path
+              %li= link_to "Logout", destroy_user_session_path
 
     .container
       .row
-        .col-lg-9
+        .col-lg-12
           = bootstrap_flash
           = yield
-        .col-lg-3
-          - if user_signed_in?
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Products", products_path
-                %li= link_to "Orders", orders_path
-                %li= link_to "Logout", destroy_user_session_path
+
       %footer
         %p &copy; BasketTest 2017
