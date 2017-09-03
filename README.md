@@ -1,24 +1,33 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requirements
 
-Things you may want to cover:
+```
+Ruby 2.4.1
+Mysql database server
+```
 
-* Ruby version
+## How to run the project
 
-* System dependencies
+```
+bundle install
+rake db:create
+rake db:migrate
+rake db:seed
+rails s
+visit http://localhost:3000
+credentials: test@example.com/123qweasd
+```
 
-* Configuration
+## Running tests
+```
+rspec spec
+```
 
-* Database creation
+## Brief summary
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+User can add products to cart one at the time.
+User can remove products from cart one at the time.
+Credit card number must be valid, i.e. 378282246310005
+```
