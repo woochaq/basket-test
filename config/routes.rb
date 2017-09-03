@@ -7,9 +7,12 @@ Rails.application.routes.draw do
   end
 
   get "basket", to: 'basket#index'
+  post "basket/promotions", to: 'basket#promotions'
+  get "basket/delete_promotion", to: 'basket#delete_promotion'
+
   resources :products, only: [:index] do
     get :add, on: :member
     get :remove, on: :member
   end
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:index, :show, :update]
 end

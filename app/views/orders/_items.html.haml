@@ -1,0 +1,22 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Amount
+      %th Price
+      - unless order.completed?
+        %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - order.order_items.each do |item|
+      %tr
+        %td= item.product.name
+        %td= item.amount
+        %td= [(item.product.price * item.amount), item.product.currency].join
+        - unless order.completed?
+          %td= link_to "remove from cart", remove_product_path(item.product)
+    %tr
+      %td
+      %td
+      %td= [order.count_total_price, '£'].join
+      - unless order.completed?
+        %td

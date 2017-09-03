@@ -2,24 +2,13 @@
 .page-header
   %h1 Basket
 - if @basket.order_items.present?
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Name
-        %th Amount
-        %th Price
-        %th=t '.actions', :default => t("helpers.actions")
-    %tbody
-      - @basket.order_items.each do |item|
-        %tr
-          %td= item.product.name
-          %td= item.amount
-          %td= [(item.product.price * item.amount), item.product.currency].join
-          %td= link_to "remove from cart", remove_product_path(item.product)
-      %tr
-        %td
-        %td
-        %td= [@basket.count_total_price, '£'].join
-        %td
+  = render 'orders/items', order: @basket
+  .row
+    - @basket.promotions.each do |promotion|
+      %div= [promotion.code, link_to('(x)', basket_delete_promotion_path(id: promotion.id))].join.html_safe
+    = render 'basket/promotion_form'
+  %hr
+  .row
+    = render 'orders/form'
 - else
   Cart is empty :(

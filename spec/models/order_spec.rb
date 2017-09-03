@@ -10,7 +10,6 @@ RSpec.describe Order, type: :model do
     end
   end
 
-
   describe "#count_total_price" do
     it "should return 0 when no order_items" do
       order = FactoryGirl.create(:order)
@@ -25,4 +24,18 @@ RSpec.describe Order, type: :model do
       expect(order.count_total_price.to_s).to eq '19.98'
     end
   end
+
+  describe "#completed?" do
+    it "should return false if order status is new" do
+      order = FactoryGirl.create(:order, status: 'new')
+      expect(order.completed?).to eq false
+    end
+
+    it "should return true if order status is completed" do
+      order = FactoryGirl.create(:order, status: 'completed')
+      expect(order.completed?).to eq true
+    end
+
+  end
+
 end

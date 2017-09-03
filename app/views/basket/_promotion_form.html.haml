@@ -1,0 +1,7 @@
+= form_tag basket_promotions_path, html: { class: "form form-horizontal order" } do |f|
+  .form-group
+    = label_tag 'Code', nil, class: 'control-label col-lg-1'
+    .col-lg-2
+      = text_field_tag :code, nil, class: 'form-control', required: true
+    .col-lg-9
+      = submit_tag "Add", class: 'btn btn-primary'

@@ -1,4 +1,4 @@
-= form_for @order, html: { class: "form form-horizontal order" } do |f|
+= form_for @basket, html: { class: "form form-horizontal order" } do |f|
   .form-group
     = f.label :address, class: 'control-label col-lg-2'
     .col-lg-10
@@ -12,9 +12,8 @@
   .form-group
     = f.label :email, class: 'control-label col-lg-2'
     .col-lg-10
-      = f.text_field :email, class: 'form-control', required: true
+      = f.text_field :email, class: 'form-control', required: true, value: current_user.email
     = f.error_span(:email)
   .form-group
     .col-lg-offset-2.col-lg-10
-      = f.submit nil,class: 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), orders_path, :class => 'btn btn-default'
+      = f.submit 'Checkout',class: 'btn btn-primary'

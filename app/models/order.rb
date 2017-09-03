@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
+  has_and_belongs_to_many :promotions
 
   STATUSES = ['new', 'completed']
 
@@ -11,7 +12,20 @@ class Order < ApplicationRecord
   validates :credit_card_number, presence: true, credit_card_number: true
 
   def count_total_price
-    self.order_items.sum{ |item| (item.product.price * item.amount) }
+    sum = self.order_items.sum{ |item| (item.product.price * item.amount) }
+    self.promotions.each do |promotion|
+      if promotion.kind == 'percent'
+        sum -= (promotion.discount * sum)/100
+      else
+        sum -= promotion.discount
+      end
+    end
+    sum = 0 if sum < 0
+    sum.round(2)
+  end
+
+  def completed?
+    self.status == 'completed'
   end
 
 end
